@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../connect/style.css">
+</head>
+<body>
+    <div id="loadingBar" style="position: absolute; width: 1%; height: 10px; display: none; background-color: #51ABFF; max-width: 100vw;">&nbsp;</div>
+    <div class="main">
+        <img src="../connect/kindleusb.svg" style="width: 400px" />
+        <div style="margin-left: 50px; max-width: 500px">
+          <h1>Connect your Amazon Kindle</h1>
+          <p>
+            You must use a usb cable to transfer data from your Amazon Kindle to computer.
+            Select the file in the path <span style="background-color: rgb(56, 56, 56); padding: 5px; border-radius: 5px; font-size: 12px; color: rgb(255, 255, 255);">kindle/system/vocabulary/vocab.db</span>
+          </p>
+          <div style="margin-top: 40px">
+            <form style="display: flex; flex-direction: column;" ref='uploadForm' 
+              id='uploadForm' 
+              action='/vocabulary/upload' 
+              method='post' 
+              encType="multipart/form-data">
+                <input id="fileInput" type="file" name="vocabulary" >
+                <input style="margin-top: 10px" id="transferButton" type='submit' value='Upload'>
+            </form> 
+          </div>
+        </div>
+      </div>
+    <script src="../connect/index.js"></script>
+</body>
+</html>
