@@ -19,7 +19,21 @@ function moveLoadingBar() {
 }
 
 document.getElementById("transferButton").addEventListener("click", (e) => {
+    const formData = new FormData();
+    const fileField = document.querySelector('input[type="file"]');
+    formData.append('vocabulary', fileField.files[0]);
+
     var loadingBar = document.getElementById("loadingBar")
     loadingBar.style.display = "block"
     moveLoadingBar()
+
+
+    fetch('/vocabulary/upload', {
+        method: 'POST',
+        body: formData
+    })
+    .then((response) => response.json())
+    .then((result) => {
+        localStorage.setItem('data', JSON.stringify(result))
+    })
 })

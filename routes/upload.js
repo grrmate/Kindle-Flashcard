@@ -14,8 +14,7 @@ router.post('/upload', async (req,res) => {
       }
     });
 
-    const result = await db.select().table('LOOKUPS');
-
+    const result = Object.fromEntries(await Promise.all(['BOOK_INFO', 'DICT_INFO', 'LOOKUPS', 'METADATA', 'VERSION', 'WORDS'].map(async (table) => [table, await db.select().table(table)])))
     res.send(result);
 })
 module.exports = router;
